@@ -1,0 +1,32 @@
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .navbar{
+        background-color: black;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .navbar-p{
+        padding: 10px;
+        display: flex;
+        gap: 10px;
+    }
+    @media screen and (max-width: 600px) {
+        .navbar-p{
+            display: none;
+        }
+    }
+</style>
+
+<div class="navbar">
+    <h1>Navbar</h1>
+    <div class="navbar-p">
+        <p>Home</p>
+        <p>About Us</p>
+        <p>Contact Us</p>
+    </div>
+</div>
