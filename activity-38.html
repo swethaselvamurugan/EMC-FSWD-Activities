@@ -1,0 +1,19 @@
+<input id="one" type="text" placeholder="number 1">
+<br>
+<input id="two" type="text" placeholder="number 2">
+<br>
+<button id="btn" onclick="add()">Add</button>
+<br>
+<h1 id="result">Result is:</h1>
+
+<script>
+    var number1 = document.getElementById("one")
+    var number2 = document.getElementById("two")
+    var btn = document.getElementById("btn")
+    var result = document.getElementById("result")
+    function add(){
+        var ans = Number(number1.value) + Number(number2.value)
+        console.log(ans)
+        result.textContent = "Result is: "+ans
+    }
+</script>

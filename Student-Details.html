@@ -1,0 +1,110 @@
+<form>
+    <table border="1">
+        <tr>
+            <th>Name:</th>
+            <td><input id="name" type="text"></td>
+        </tr>
+        <tr>
+            <th>Age:</th>
+            <td><input id="age" type="number"></td>
+        </tr>
+        <tr>
+            <th>Gender:</th>
+            <td>
+                <input type="radio" name="gender" value="Male">Male
+                <input type="radio" name="gender" value="Female">Female
+            </td>
+        </tr>
+        <tr>
+            <th>Course:</th>
+            <td>
+                <select id="course" style="width: 100%;">
+                    <option>Python</option>
+                    <option>Java</option>
+                    <option>DSA</option>
+                    <option>JavaScript</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <th>E-mail:</th>
+            <td><input id="email" type="email"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button style="width: 100%; background-color: lightgreen;"
+                    onclick="save(event)">Save</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<br>
+
+<form>
+    <table border="1" id="container">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Course</th>
+            <th>E-mail</th>
+            <th>Action</th>
+        </tr>
+    </table>
+</form>
+
+<script>
+    function save(event) {
+        event.preventDefault();
+        var name = document.getElementById("name");
+        var age = document.getElementById("age");
+        var gender = getSelectedgender();
+        var course = document.getElementById("course");
+        var email = document.getElementById("email");
+        var container = document.getElementById("container");
+
+        var row = document.createElement("tr");
+
+        var data1 = document.createElement("td");
+        data1.textContent = name.value;
+        row.appendChild(data1);
+
+        var data2 = document.createElement("td");
+        data2.textContent = Number(age.value);
+        row.appendChild(data2);
+
+        var data3 = document.createElement("td");
+        data3.textContent = gender;
+        row.appendChild(data3);
+
+        var data4 = document.createElement("td");
+        data4.textContent = course.value;
+        row.appendChild(data4);
+
+        var data5 = document.createElement("td");
+        data5.textContent = email.value;
+        row.appendChild(data5);
+
+        var btn = document.createElement("button");
+        btn.textContent = "Delete";
+        btn.style.backgroundColor = "red"
+        btn.addEventListener("click", function (event) {
+            event.target.parentElement.remove();
+        });
+        row.appendChild(btn);
+
+        container.appendChild(row);
+    }
+
+    function getSelectedgender() {
+        var selectedGenders = document.getElementsByName("gender");
+        var s_gender;
+        for (var i = 0; i < selectedGenders.length; i++) {
+            if (selectedGenders[i].checked) {
+                s_gender = selectedGenders[i].value;
+                break;
+            }
+        }
+        return s_gender;
+    }
+</script>
