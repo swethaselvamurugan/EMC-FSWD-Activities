@@ -1,0 +1,84 @@
+<style>
+    .container {
+        width: 300px;
+        height: 150px;
+        margin: 30px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box-1 {
+        height: 75%;
+        margin-top: 25px;
+    }
+
+    .box-2 {
+        height: 25%;
+        margin: 15px;
+    }
+
+    .box-2 input {
+        height: 35px;
+        width: 190px;
+        border: solid black 1px;
+        border-radius: 5px;
+    }
+
+    .box-2 button {
+        height: 35px;
+        width: 60px;
+        background-color: green;
+        color: white;
+        border-radius: 2px;
+        border: none;
+    }
+
+    .box-2 button:focus {
+        outline: none;
+    }
+</style>
+
+<div class="container">
+    <div class="box-1">
+        <h3 id="capcha"></h3>
+    </div>
+    <div class="box-2">
+        <input id="inputText" type="text">
+        <button id="verify">Verify</button>
+    </div>
+</div>
+
+<script>
+    var capcha = document.getElementById("capcha")
+    var input = document.getElementById("inputText")
+    var verify = document.getElementById("verify")
+    verify.addEventListener("click", function () {
+        if (capcha.textContent == input.value) {
+            alert("CAPCHA verified successfully!")
+        }
+        else {
+            alert("CAPCHA verification failed, Please try again.")
+        }
+    })
+
+    function generateCaptcha() {
+        var charsArray =
+            "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var length = 6;
+        var CAPTCHA = [];
+        for (var i = 0; i < length; i++) {
+            var index = Math.floor(Math.random() * charsArray.length);
+            CAPTCHA.push(charsArray[index]);
+        }
+        captchaText = CAPTCHA.join("");
+        capcha.textContent = captchaText;
+    }
+
+    window.onload = function () {
+        generateCaptcha();
+    };
+</script>
