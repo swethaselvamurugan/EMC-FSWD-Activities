@@ -1,0 +1,145 @@
+<style>
+    .container-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 500px;
+        height: 450px;
+        margin: 30px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+
+    .option-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        background-color: green;
+        color: white;
+        width: fit-content;
+        padding: 10px;
+        margin: 10px;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .container-2 {
+        width: 300px;
+        padding: 10px;
+        margin: 30px;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+</style>
+
+<div class="container-1" id="container-1">
+    <h1>Interactive Quiz</h1>
+    <p>1. What is the captital of France ?</p>
+    <div class="option-container">
+        <div class="option">
+            <input type="radio" name="option1" value="Paris">
+            <label>Paris</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="option1" value="London">
+            <label>London</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="option1" value="Berlin">
+            <label>Berlin</label>
+        </div>
+    </div>
+
+    <p>2. Which planet is known as Red Planet ?</p>
+    <div class="option-container">
+        <div class="option">
+            <input type="radio" name="option2" value="Mars">
+            <label>Mars</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="option2" value="Venus">
+            <label>Venus</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="option2" value="Jupiter">
+            <label>Jupiter</label>
+        </div>
+    </div>
+
+    <p>3. What is the largest mammal on Earth ?</p>
+    <div class="option-container">
+        <div class="option">
+            <input type="radio" name="option3" value="Elephant">
+            <label>Elephant</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="option3" value="Blue Whale">
+            <label>Blue Whale</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="option3" value="Giraffe">
+            <label>Giraffe</label>
+        </div>
+    </div>
+    <button id="submit">Submit</button>
+</div>
+
+<div class="container-2" id="container-2">
+    <h1>Interactive Quiz</h1>
+    <h3>Your quiz result</h3>
+    <p id="result">Score: 0</p>
+</div>
+
+<script>
+    document.getElementById('submit').addEventListener('click', function (event) {
+        event.preventDefault();
+        calculateScore();
+    });
+
+    function calculateScore() {
+        var correctAnswers = {
+            option1: 'Paris',
+            option2: 'Mars',
+            option3: 'Blue Whale'
+        };
+
+        var score = 0;
+        var allAnswered = true;
+
+        for (var option in correctAnswers) {
+            var radioButtons = document.getElementsByName(option);
+            var selectedOption = null;
+
+            for (var i = 0; i < radioButtons.length; i++) {
+                if (radioButtons[i].checked) {
+                    selectedOption = radioButtons[i];
+                    break;
+                }
+            }
+
+            if (!selectedOption) {
+                allAnswered = false;
+                break;
+            } else if (selectedOption.value === correctAnswers[option]) {
+                score++;
+            }
+        }
+
+        if (!allAnswered) {
+            alert('Please answer all questions.');
+            return;
+        }
+
+        document.getElementById('result').innerText = `Score: ${score}/3`;
+    }
+</script>

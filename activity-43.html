@@ -1,0 +1,15 @@
+<div>
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female
+    <h1 id="result">Male / Female</h1>
+</div>
+
+<script>
+    var radio= document.getElementsByName("gender")
+    var result = document.getElementById("result")
+    for(count=0;count<2;count=count+1){
+        radio[count].addEventListener("click",function(){
+            result.textContent = event.target.value
+        })
+    }
+</script>

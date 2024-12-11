@@ -1,0 +1,96 @@
+<style>
+    .container {
+        margin: 10px;
+        text-align: center;
+        border: solid black 2px;
+    }
+
+    .image-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin: 10px;
+    }
+
+    .image-container img {
+        margin: 10px;
+        flex-grow: 1;
+        flex-basis: 10%;
+    }
+
+    .layout {
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(5px);
+        z-index: 1;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: auto;
+        display: none;
+    }
+
+    .popup-container {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .layout img {
+        height: 600;
+        width: 400;
+    }
+
+    .layout p {
+        position: absolute;
+        top: 20px;
+        right: 35px;
+        color: white;
+        font-size: large;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    <h1>Image Gallery</h1>
+    <div class="image-container">
+        <img src="https://picsum.photos/id/10/200/300">
+        <img src="https://picsum.photos/id/12/200/300">
+        <img src="https://picsum.photos/id/13/200/300">
+        <img src="https://picsum.photos/id/14/200/300">
+        <img src="https://picsum.photos/id/15/200/300">
+        <img src="https://picsum.photos/id/16/200/300">
+        <img src="https://picsum.photos/id/17/200/300">
+        <img src="https://picsum.photos/id/18/200/300">
+        <img src="https://picsum.photos/id/19/200/300">
+        <img src="https://picsum.photos/id/11/200/300">
+        <img src="https://picsum.photos/id/12/200/300">
+        <img src="https://picsum.photos/id/13/200/300">
+    </div>
+</div>
+<div class="layout" id="layout">
+    <div class="popup-container">
+        <p id="close">X</p>
+        <img class="popupImage" id="popup-image">
+    </div>
+</div>
+
+<script>
+    var images = document.querySelectorAll("img")
+    var popup = document.getElementById("layout")
+    var popupImage = document.getElementById("popup-image")
+    images.forEach(image => {
+        image.addEventListener("click", function () {
+            layout.style.display = "block";
+            popupImage.src = image.src;
+        });
+    });
+
+    var Close = document.getElementById("close")
+    Close.addEventListener("click", function () {
+        layout.style.display = "none";
+    })
+</script>
