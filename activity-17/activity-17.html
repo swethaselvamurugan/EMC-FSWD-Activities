@@ -1,0 +1,45 @@
+<style>
+    .box{
+        background-color: palevioletred;
+        height: 200px;
+        width: 200px;
+        margin-top: 100px;
+        margin-left: 100px;
+        position: relative;
+    }
+    .left{
+        width: 40px;
+        position: absolute;
+        left: 180px;
+        top: 80px;
+    }
+    .right{
+        width: 40px;
+        position: absolute;
+        right: 180px;
+        top: 80px;
+    }
+    .dot{
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: black;
+        display: inline-block;
+    }
+    .carousel{
+        position: absolute;
+        bottom: 0;
+        left: 70px;
+    }
+</style>
+
+<div class="box">
+    <img class="left" src="play.png">
+    <img class="right" src="play.png">
+    <div class="carousel">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
